@@ -5,7 +5,7 @@ import { Environment } from '@react-three/drei'
 import { Character } from './Character.jsx'
 import { Dust } from './Dust.jsx'
 import { TapPop } from './TapPop.jsx'
-import { makeEnvironmentTexture } from '../lib/textures.js'
+import { makeBackgroundTexture, makeEnvironmentTexture } from '../lib/textures.js'
 import { damp } from '../lib/spring.js'
 
 /** Studio lighting: warm key, cool sky bounce, coral kicker. */
