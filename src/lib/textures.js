@@ -154,8 +154,8 @@ export function makeBackgroundTexture() {
     512,
     720,
   )
-  g.addColorStop(0, '#3a2318')
-  g.addColorStop(0.32, '#24140d')
+  g.addColorStop(0, '#503221')
+  g.addColorStop(0.32, '#2c1a10')
   g.addColorStop(0.66, '#170d08')
   g.addColorStop(1, '#0d0604')
   ctx.fillStyle = g

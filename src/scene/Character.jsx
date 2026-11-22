@@ -170,7 +170,7 @@ export const Character = ({ state, ref: forwarded, quality }) => {
             <meshBasicMaterial
               color="#ffb277"
               transparent
-              opacity={0.34}
+              opacity={0.18}
               blending={THREE.AdditiveBlending}
               depthWrite={false}
               toneMapped={false}
@@ -219,10 +219,22 @@ export const Character = ({ state, ref: forwarded, quality }) => {
               <meshBasicMaterial colorWrite={false} side={THREE.FrontSide} />
             </mesh>
             <Eyes state={state} />
+            {/* thin glowing gold ring around the face, like the reference */}
+            <mesh renderOrder={2} position={[0, 0, 0.012]}>
+              <torusGeometry args={[SPEC.face.radius + 0.022, 0.0075, 12, 96]} />
+              <meshBasicMaterial
+                color="#ffcf8a"
+                transparent
+                opacity={0.9}
+                blending={THREE.AdditiveBlending}
+                depthWrite={false}
+                toneMapped={false}
+              />
+            </mesh>
           </group>
 
-          {/* the glass hood */}
-          <mesh ref={hoodMeshRef} geometry={hoodGeo} renderOrder={3}>
+          {/* the glass hood — tilted like the reference leaf, apex to the side */}
+          <mesh ref={hoodMeshRef} geometry={hoodGeo} renderOrder={3} rotation={[0, 0, -0.28]}>
             <MeshTransmissionMaterial
               // Samples and buffer resolution are the two knobs that decide
               // whether a phone holds 60fps; the hood still reads as glass at
@@ -230,15 +242,15 @@ export const Character = ({ state, ref: forwarded, quality }) => {
               samples={quality.transmissionSamples}
               resolution={quality.transmissionResolution}
               transmission={1}
-              thickness={0.42}
-              roughness={0.10}
+              thickness={0.30}
+              roughness={0.03}
               ior={1.42}
-              chromaticAberration={0.09}
+              chromaticAberration={0.05}
               anisotropicBlur={0.35}
-              distortion={0.12}
-              distortionScale={0.22}
-              temporalDistortion={0.04}
-              attenuationDistance={1.5}
+              distortion={0}
+              distortionScale={0}
+              temporalDistortion={0}
+              attenuationDistance={4}
               attenuationColor={SPEC.palette.glassAttenuation}
               color={SPEC.palette.glassTint}
               specularIntensity={0.85}
@@ -249,7 +261,7 @@ export const Character = ({ state, ref: forwarded, quality }) => {
           </mesh>
 
           {/* thin glowing warm rim, hugging the silhouette */}
-          <mesh ref={rimRef} geometry={hoodGeo} scale={1.012} renderOrder={4}>
+          <mesh ref={rimRef} geometry={hoodGeo} scale={1.012} renderOrder={4} rotation={[0, 0, -0.28]}>
             <meshBasicMaterial
               color={SPEC.palette.rim}
               transparent

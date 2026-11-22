@@ -33,6 +33,9 @@ export const SPEC = {
       [0.000, -0.710],
     ],
     scale: 0.62,
+    // The reference hood is almost as wide as it is tall in the front view,
+    // so the lathe is stretched sideways; depth stays slim like the side view.
+    width: 1.12,
     // The hood is a leaf seen edge-on: broad across the front, slim from the
     // side. Depth is a fraction of width, matching the reference's side view.
     depth: 0.78,
@@ -41,8 +44,8 @@ export const SPEC = {
     tilt: -0.06,
   },
   face: {
-    radius: 0.345,
-    position: [0, 0.155, 0.175],
+    radius: 0.272,
+    position: [0, 0.12, 0.16],
     eyeYaw: 0.30,
     eyePitch: 0.075,
   },
@@ -90,12 +93,12 @@ export const SPEC = {
       { radius: 0.66, rotation: [-0.55, -0.35, 1.05] },
       { radius: 0.80, rotation: [1.16, 0.65, -0.28] },
     ],
-    ringTube: 0.0055,
+    ringTube: 0.0045,
   },
   palette: {
-    glassTint: '#c07a45',
-    glassAttenuation: '#8f4a26',
-    rim: '#ffb066',
+    glassTint: '#efe0c8',
+    glassAttenuation: '#d9b48c',
+    rim: '#ffcf96',
     face: '#08060a',
     body: '#f0e3d2',
     bodyShade: '#d9c4ae',
@@ -198,7 +201,7 @@ export function leanTip(geo, amount) {
 
 export function buildHoodGeometry() {
   const g = latheFromProfile(SPEC.hood.profile, 96, 180)
-  g.scale(SPEC.hood.scale, SPEC.hood.scale, SPEC.hood.scale * SPEC.hood.depth)
+  g.scale(SPEC.hood.scale * SPEC.hood.width, SPEC.hood.scale, SPEC.hood.scale * SPEC.hood.depth)
   leanTip(g, SPEC.hood.tipLean)
   g.computeVertexNormals()
   return g

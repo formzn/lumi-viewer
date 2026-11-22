@@ -80,13 +80,13 @@ export function Eyes({ state }) {
 
   const uniforms = useMemo(
     () => ({
-      uCurve: { value: 0.40 },
-      uSpan: { value: 0.150 },
-      uThick: { value: 0.0185 },
+      uCurve: { value: 0.48 },
+      uSpan: { value: 0.24 },
+      uThick: { value: 0.034 },
       uGlow: { value: 1.0 },
       uAlpha: { value: 1.0 },
-      uY0: { value: 0.135 },
-      uYaw: { value: 0.295 },
+      uY0: { value: 0.05 },
+      uYaw: { value: 0.33 },
       uScale: { value: 1.0 },
       uColor: { value: new THREE.Color('#fffaf0') },
       uHalo: { value: new THREE.Color('#ffb877') },
@@ -100,23 +100,23 @@ export function Eyes({ state }) {
     const blink = Math.max(s.blinkAmount || 0, 0)
 
     // Target expression.
-    let curve = 0.40
-    let thick = 0.0185
-    let span = 0.150
+    let curve = 0.48
+    let thick = 0.034
+    let span = 0.24
     let scale = 1
 
     if (s.asleep) {
       curve = 0.058 // nearly flat, softly closed
-      thick = 0.016
-      span = 0.150
+      thick = 0.028
+      span = 0.24
     } else if (s.mood === 'happy') {
-      curve = 0.62 // big happy arc
-      thick = 0.0215
-      span = 0.158
+      curve = 0.70 // big happy arc
+      thick = 0.036
+      span = 0.25
     } else if (s.mood === 'alert') {
       curve = 0.50 // rounder, wider eyes
-      thick = 0.025
-      span = 0.132
+      thick = 0.038
+      span = 0.22
       scale = 1.0
     }
 

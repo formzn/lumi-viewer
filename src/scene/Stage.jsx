@@ -35,8 +35,8 @@ function Lights() {
       <directionalLight position={[-3.0, 1.6, -2.4]} intensity={0.85} color="#8fb6ff" />
 
       {/* warm kicker, right side — the rim that makes the silhouette glow */}
-      <pointLight position={[2.2, 0.3, -1.4]} intensity={5.5} color="#ff8a4d" distance={7} decay={2} />
-      <pointLight position={[-1.5, 1.4, 1.8]} intensity={2.4} color="#ffbe8a" distance={6} decay={2} />
+      <pointLight position={[2.2, 0.3, -1.4]} intensity={2.2} color="#ffb27a" distance={7} decay={2} />
+      <pointLight position={[-1.5, 1.4, 1.8]} intensity={1.4} color="#ffbe8a" distance={6} decay={2} />
       {/* low fill so the cream body never goes flat black underneath */}
       <pointLight position={[0, -2.2, 1.6]} intensity={2.0} color="#ffb98c" distance={5} decay={2} />
     </>
